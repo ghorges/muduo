@@ -21,6 +21,41 @@ void Socket::bind_fd(int port)
     ::bind(fd_,(struct sockaddr*)&my_addr,sizeof(my_addr));
 }
 
+int Socket::connect_fd(int port,std::string address)
+{
+    struct sockaddr_in con_addr;
+    memset(&con_addr,0,sizeof(con_addr));
+    con_addr.sin_family = AF_INET;
+    con_addr.sin_port = htons(port);
+    con_addr.sin_addr.s_addr = inet_addr(address.c_str());
+
+    while(1)
+    {
+        int ret = connect(fd_,(struct sockaddr *)&con_addr,sizeof(con_addr));
+        if(ret != -1)
+            break;
+        //err 114　is Operation already in progress
+        //err 115 is Operation now in progress
+        if(errno == 114 || errno == 115)
+        {
+            continue;
+        }
+        else
+        {
+            //err 106 is Transport endpoint is already connected
+            if(errno == 106)
+                break;
+            else
+            {
+                perror("err:");
+                std::cout << errno << std::endl;
+                return -1;
+            }
+        }
+    }
+    return 0;
+}
+
 void Socket::listen_fd()
 {
     listen(fd_,5);
