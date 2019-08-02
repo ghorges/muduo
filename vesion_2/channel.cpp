@@ -62,7 +62,7 @@ void channel::read_fd()
 {
     int t = getmessage_();
     if(t > 0)
-        onmessage(*this,sendmess_);
+        onmessage(*this,getmess_);
 }
 
 //////////
@@ -115,7 +115,7 @@ int channel::sendmessage_(std::string message,int length)
 }
 void channel::send_data()
 {
-    std::cout << "send data" << std::endl;
+    //std::cout << "send data" << std::endl;
     int t = sendmess_.readbytes();
     int n = send(fd_,sendmess_.c_str(),t,0);
     if(n < 0)
