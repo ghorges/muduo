@@ -20,5 +20,9 @@ void tcpcli::connection()
     listen_cha->set_writecb(std::bind(&channel::send_data,listen_cha.get()));
     listen_cha->set_errcb(std::bind(&channel::error_fd,listen_cha.get()));
 
+
+    listen_cha->set_connection(this->onconnection);
+    listen_cha->set_onmessage(this->onmessage);
+
     onconnection(*(listen_cha.get()));
 }

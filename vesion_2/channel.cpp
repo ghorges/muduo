@@ -62,7 +62,7 @@ void channel::read_fd()
 {
     int t = getmessage_();
     if(t > 0)
-        onmessage(*this,getmess_);
+        onmessage(*this,sendmess_);
 }
 
 //////////
