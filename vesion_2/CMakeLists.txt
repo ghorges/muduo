@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 project(muo)
-add_executable(${PROJECT_NAME} "main.cpp"  "eventloop.h" "eventloop.cpp" "noncopyable.h" "noncopyable.cpp" "channel.h" "channel.cpp" "buffer.h" "buffer.cpp" "epoller.h" "epoller.cpp" "poller.h" "poller.cpp" "timer.h" "timer.cpp" "Socket.h" "Socket.cpp" "acceptor.h" "acceptor.cpp" "tcpserver.h" "tcpserver.cpp")
+add_executable(${PROJECT_NAME} "main.cpp"  "eventloop.h" "eventloop.cpp" "noncopyable.h" "noncopyable.cpp" "channel.h" "channel.cpp" "buffer.h" "buffer.cpp" "epoller.h" "epoller.cpp" "poller.h" "poller.cpp" "timer.h" "timer.cpp" "Socket.h" "Socket.cpp" "acceptor.h" "acceptor.cpp" "tcpserver.h" "tcpserver.cpp" "tcpcli.h" "tcpcli.cpp")
 
 set(CMAKE_CXX_FLAGS "-g -std=c++11 -lpthread")
 
