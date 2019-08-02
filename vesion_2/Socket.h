@@ -10,6 +10,7 @@
 #include <netinet/in.h>
 #include <iostream>
 #include <netinet/tcp.h>
+#include <string.h>
 
 class Socket : public noncopyable /*public std::enable_shared_from_this*/
 {
@@ -22,6 +23,8 @@ public:
     void bind_fd(int port);
     void listen_fd();
     int accept_fd();
+
+    int connect_fd(int port,std::string address);
 
     //setsockopt
     void setTcpNoDelay(bool on);
